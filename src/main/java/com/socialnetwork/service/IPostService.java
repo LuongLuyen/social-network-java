@@ -1,5 +1,9 @@
 package com.socialnetwork.service;
 
+import java.util.List;
+
+import com.socialnetwork.model.PostModel;
+
 public interface IPostService {
-	String findAll();
+	List<PostModel> findAll();
 }
