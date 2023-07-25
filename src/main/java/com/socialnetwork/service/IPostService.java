@@ -9,4 +9,5 @@ public interface IPostService {
 	PostModel create(PostModel postModel);
 	PostModel findOne(Long id);
 	PostModel update(PostModel postModel);
+	void delete(long[] ids);
 }

@@ -34,4 +34,11 @@ public class PostService implements IPostService {
 		postDAO.update(postModel);
 		return postDAO.findOne(postModel.getId());
 	}
+
+	@Override
+	public void delete(long[] ids) {
+		for (long id: ids) {
+			postDAO.delete(id);
+		}
+	}
 }

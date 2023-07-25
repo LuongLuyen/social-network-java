@@ -52,6 +52,14 @@ public class PostAPI extends HttpServlet {
 		PostModel data =  HttpUtil.of(request.getReader()).toModel(PostModel.class);
 		data = postService.update(data);
 		mapper.writeValue(response.getOutputStream(), data);
-
+	}
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		PostModel postModel =  HttpUtil.of(request.getReader()).toModel(PostModel.class);
+		postService.delete(postModel.getIds());
+		mapper.writeValue(response.getOutputStream(), "{ successfully }");
 	}
 }

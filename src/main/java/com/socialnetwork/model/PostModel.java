@@ -1,16 +1,10 @@
 package com.socialnetwork.model;
 
-public class PostModel {
-	private Long id;
+public class PostModel extends AbstractModel {
 	private Long userId;
 	private String content;
 	private Long likeCount;
-	public Long getId() {
-		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 	public Long getUserId() {
 		return userId;
 	}

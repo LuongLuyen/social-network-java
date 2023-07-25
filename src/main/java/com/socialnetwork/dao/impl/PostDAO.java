@@ -33,4 +33,9 @@ public class PostDAO extends AbstractDAO implements IPostDAO{
 		update(sql, postModel.getUserId(),postModel.getContent(),
 				postModel.getLikeCount(), postModel.getId());
 	}
+	@Override
+	public void delete(long id) {
+		String sql = "DELETE FROM posts WHERE id = ?";
+		update(sql, id);
+	}
 }

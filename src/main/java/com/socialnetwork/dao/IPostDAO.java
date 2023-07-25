@@ -9,4 +9,5 @@ public interface IPostDAO {
 	Long create(PostModel postModel);
 	PostModel findOne(Long id);
 	void update(PostModel postModel);
+	void delete(long id);
 }
