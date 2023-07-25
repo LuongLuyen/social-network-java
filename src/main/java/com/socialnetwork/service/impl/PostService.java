@@ -11,13 +11,21 @@ import com.socialnetwork.service.IPostService;
 public class PostService implements IPostService {
 	@Inject
 	private IPostDAO postDAO;
+
 	@Override
-	public List<PostModel>  findAll() {
+	public List<PostModel> findAll() {
 		return postDAO.findAll();
 	}
+
 	@Override
 	public PostModel create(PostModel postModel) {
-		postDAO.create(postModel);
-		return null;
+		Long id = postDAO.create(postModel);
+		return postDAO.findOne(id);
+	}
+
+	@Override
+	public PostModel findOne(Long id) {
+		PostModel postModel = postDAO.findOne(id);
+		return postModel;
 	}
 }

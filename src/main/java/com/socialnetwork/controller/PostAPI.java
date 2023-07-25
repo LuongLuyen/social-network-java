@@ -39,7 +39,7 @@ public class PostAPI extends HttpServlet {
 		ObjectMapper mapper = new ObjectMapper();
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
-		// json --> string
+		// json --> model
 		PostModel data =  HttpUtil.of(request.getReader()).toModel(PostModel.class);
 		data = postService.create(data);
 		mapper.writeValue(response.getOutputStream(), data);
