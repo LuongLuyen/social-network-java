@@ -28,11 +28,11 @@ public class PostAPI extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ObjectMapper mapper = new ObjectMapper();
-		List<PostModel> results = new ArrayList<>();
+		List<PostModel> data = new ArrayList<>();
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
-		results = postService.findAll();
-		mapper.writeValue(response.getOutputStream(), results);
+		data = postService.findAll();
+		mapper.writeValue(response.getOutputStream(), data);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -42,6 +42,15 @@ public class PostAPI extends HttpServlet {
 		// json --> model
 		PostModel data =  HttpUtil.of(request.getReader()).toModel(PostModel.class);
 		data = postService.create(data);
+		mapper.writeValue(response.getOutputStream(), data);
+	}
+	protected void doPut(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		PostModel data =  HttpUtil.of(request.getReader()).toModel(PostModel.class);
+		data = postService.update(data);
 		mapper.writeValue(response.getOutputStream(), data);
 
 	}

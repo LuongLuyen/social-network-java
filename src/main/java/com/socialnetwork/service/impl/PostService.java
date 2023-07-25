@@ -28,4 +28,10 @@ public class PostService implements IPostService {
 		PostModel postModel = postDAO.findOne(id);
 		return postModel;
 	}
+
+	@Override
+	public PostModel update(PostModel postModel) {
+		postDAO.update(postModel);
+		return postDAO.findOne(postModel.getId());
+	}
 }
