@@ -15,4 +15,9 @@ public class PostService implements IPostService {
 	public List<PostModel>  findAll() {
 		return postDAO.findAll();
 	}
+	@Override
+	public PostModel create(PostModel postModel) {
+		postDAO.create(postModel);
+		return null;
+	}
 }

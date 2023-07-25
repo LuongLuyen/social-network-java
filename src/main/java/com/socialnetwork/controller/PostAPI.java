@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.socialnetwork.model.PostModel;
 import com.socialnetwork.service.IPostService;
+import com.socialnetwork.utils.HttpUtil;
 
 @WebServlet(urlPatterns = {"/api-post"})
 public class PostAPI extends HttpServlet {
@@ -32,6 +33,16 @@ public class PostAPI extends HttpServlet {
 		response.setContentType("application/json");
 		results = postService.findAll();
 		mapper.writeValue(response.getOutputStream(), results);
+	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		ObjectMapper mapper = new ObjectMapper();
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		// json --> string
+		PostModel data =  HttpUtil.of(request.getReader()).toModel(PostModel.class);
+		data = postService.create(data);
+		mapper.writeValue(response.getOutputStream(), data);
 
 	}
 }

@@ -6,4 +6,5 @@ import com.socialnetwork.model.PostModel;
 
 public interface IPostDAO {
 	List<PostModel> findAll();
+	Long create(PostModel postModel);
 }
