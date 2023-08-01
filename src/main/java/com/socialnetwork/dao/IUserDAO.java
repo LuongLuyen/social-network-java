@@ -4,4 +4,5 @@ import com.socialnetwork.model.UserModel;
 
 public interface IUserDAO {
 	UserModel findOne(Long id);
+	Long create(UserModel userModel);
 }

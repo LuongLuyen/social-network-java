@@ -15,4 +15,10 @@ public class UserService implements IUserService {
 		UserModel userModel = userDao.findOne(id);
 		return userModel;
 	}
+
+	@Override
+	public UserModel create(UserModel userModel) {
+		Long id = userDao.create(userModel);
+		return userDao.findOne(id);
+	}
 }

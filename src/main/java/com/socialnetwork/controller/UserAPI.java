@@ -35,7 +35,12 @@ public class UserAPI extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		ObjectMapper mapper = new ObjectMapper();
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("application/json");
+		UserModel data =  HttpUtil.of(request.getReader()).toModel(UserModel.class);
+		data = userService.create(data);
+		mapper.writeValue(response.getOutputStream(), data);
 	}
 	protected void doPut(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
