@@ -11,9 +11,13 @@ public class PostMapper implements RowMapper<PostModel> {
 		try {
 			PostModel post = new PostModel();
 			post.setId(resultSet.getLong("id"));
-			post.setUserId(resultSet.getLong("user_id"));
+			post.setUserId(resultSet.getLong("userId"));
 			post.setContent(resultSet.getString("content"));
-			post.setLikeCount(resultSet.getLong("like_count"));
+			post.setContentUrl(resultSet.getString("contentUrl"));
+			post.setLikeCount(resultSet.getLong("likeCount"));
+			post.setCommentCount(resultSet.getLong("commentCount"));
+			post.setShareCount(resultSet.getLong("shareCount"));
+			post.setCategory(resultSet.getString("category"));
 			return post;
 		} catch (SQLException e) {
 			return null;

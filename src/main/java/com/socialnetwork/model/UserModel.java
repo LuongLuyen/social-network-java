@@ -5,11 +5,7 @@ public class UserModel extends AbstractModel{
 	private String password;
 	private String fullName;
 	private String email;
-	private String studyAt;
-	private String workingAt;
-	private String otherInfo;
-	private String dateOfbirth;
-	private String avatarUrl;
+	private String role;
 	public String getUserName() {
 		return userName;
 	}
@@ -34,34 +30,10 @@ public class UserModel extends AbstractModel{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getStudyAt() {
-		return studyAt;
+	public String getRole() {
+		return role;
 	}
-	public void setStudyAt(String studyAt) {
-		this.studyAt = studyAt;
-	}
-	public String getWorkingAt() {
-		return workingAt;
-	}
-	public void setWorkingAt(String workingAt) {
-		this.workingAt = workingAt;
-	}
-	public String getOtherInfo() {
-		return otherInfo;
-	}
-	public void setOtherInfo(String otherInfo) {
-		this.otherInfo = otherInfo;
-	}
-	public String getDateOfbirth() {
-		return dateOfbirth;
-	}
-	public void setDateOfbirth(String dateOfbirth) {
-		this.dateOfbirth = dateOfbirth;
-	}
-	public String getAvatarUrl() {
-		return avatarUrl;
-	}
-	public void setAvatarUrl(String avatarUrl) {
-		this.avatarUrl = avatarUrl;
+	public void setRole(String role) {
+		this.role = role;
 	}
 }

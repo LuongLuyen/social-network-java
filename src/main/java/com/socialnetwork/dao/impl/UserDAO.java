@@ -17,11 +17,17 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 
 	@Override
 	public Long create(UserModel userModel) {
-		String sql = "INSERT INTO users (username,password,full_name,email,study_at,working_at,other_info,date_of_birth,avatar_url) VALUES (?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO users (userName,password,fullName,email,role) VALUES (?,?,?,?,?)";
 		return insert(sql, 
 				userModel.getUserName(), userModel.getPassword(),userModel.getFullName(),
-				userModel.getEmail(),userModel.getStudyAt(),userModel.getWorkingAt(),
-				userModel.getOtherInfo(),userModel.getDateOfbirth(),userModel.getAvatarUrl()
-				);
+				userModel.getEmail(),userModel.getRole()
+	    );
+	}
+
+	@Override
+	public UserModel findUser(String userName) {
+		String sql = "SELECT * FROM users WHERE userName = ?";
+		List<UserModel> user = query(sql, new UserMapper(), userName);
+		return user.isEmpty() ? null : user.get(0);
 	}
 }

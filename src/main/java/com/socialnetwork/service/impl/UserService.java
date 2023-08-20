@@ -21,4 +21,10 @@ public class UserService implements IUserService {
 		Long id = userDao.create(userModel);
 		return userDao.findOne(id);
 	}
+
+	@Override
+	public UserModel findUser(String userName) {
+		UserModel userModel = userDao.findUser(userName);
+		return userModel;
+	}
 }
