@@ -21,17 +21,15 @@ public class Login extends HttpServlet {
 	@Inject
 	private IUserService userService;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		ObjectMapper mapper = new ObjectMapper();
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("application/json");
-		UserModel data = new UserModel();
-		data.setUserName("Nguyen Van A");
-		data.setPassword("123456");
-//		UserModel data = HttpUtil.of(request.getReader()).toModel(UserModel.class);
-//		data = userService.findUser(data.getUserName());
-		response.sendRedirect("http://localhost:3000/home");
+		
+		UserModel data = HttpUtil.of(request.getReader()).toModel(UserModel.class);
+		data = userService.findUser(data.getUserName());
+		mapper.writeValue(response.getOutputStream(), data);
 	}
 }
