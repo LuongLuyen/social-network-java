@@ -18,9 +18,13 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 	@Override
 	public Long create(UserModel userModel) {
 		String sql = "INSERT INTO users (userName,password,fullName,email,role) VALUES (?,?,?,?,?)";
-		return insert(sql, 
-				userModel.getUserName(), userModel.getPassword(),userModel.getFullName(),
-				userModel.getEmail(),userModel.getRole()
+		return insert(
+				sql, 
+				userModel.getUserName(), 
+				userModel.getPassword(),
+				userModel.getFullName(),
+				userModel.getEmail(),
+				userModel.getRole()
 	    );
 	}
 

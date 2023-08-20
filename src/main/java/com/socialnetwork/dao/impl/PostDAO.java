@@ -16,8 +16,17 @@ public class PostDAO extends AbstractDAO implements IPostDAO{
 
 	@Override
 	public Long create(PostModel postModel) {
-		String sql = "INSERT INTO posts (user_id,content,like_count) VALUES (?,?,?)";
-		return insert(sql, postModel.getUserId(),postModel.getContent(),postModel.getLikeCount());
+		String sql = "INSERT INTO posts (userId,content,contentUrl,likeCount,commentCount,shareCount,category) VALUES (?,?,?,?,?,?,?)";
+		return insert(
+				sql, 
+				postModel.getUserId(),
+				postModel.getContent(),
+				postModel.getContentUrl(), 
+				postModel.getLikeCount(),
+				postModel.getCommentCount(),
+				postModel.getShareCount(),
+				postModel.getCategory()
+	    );
 	}
 
 	@Override
@@ -29,9 +38,19 @@ public class PostDAO extends AbstractDAO implements IPostDAO{
 
 	@Override
 	public void update(PostModel postModel) {
-		String sql = "UPDATE posts SET user_id = ?, content = ?, like_count = ? WHERE id = ?";
-		update(sql, postModel.getUserId(),postModel.getContent(),
-				postModel.getLikeCount(), postModel.getId());
+		String sql = "UPDATE posts SET userId = ?, content = ?, contentUrl = ?, likeCount = ?, commentCount = ?, shareCount = ?, category =? WHERE id = ?";
+		update(
+				sql, 
+				postModel.getUserId(),
+				postModel.getContent(),
+				postModel.getContentUrl(), 
+				postModel.getLikeCount(),
+				postModel.getCommentCount(),
+				postModel.getShareCount(),
+				postModel.getCategory(),
+				
+				postModel.getId()
+		);
 	}
 	@Override
 	public void delete(long id) {
